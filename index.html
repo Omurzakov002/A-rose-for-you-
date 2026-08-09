@@ -1,297 +1,204 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Для Тебя 🌸</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            /* Темный фон с глубоким розовым оттенком */
-            background-color: #0a0104;
-            color: #ffffff;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-        }
-        /* Карточка интерфейса */
-        
-        .card {
-            background: rgba(255, 182, 193, 0.07);
-            /* Очень прозрачный розовый */
-            border: 1px solid rgba(255, 182, 193, 0.15);
-            padding: 30px;
-            border-radius: 25px;
-            text-align: center;
-            backdrop-filter: blur(12px);
-            width: 300px;
-            z-index: 10;
-            transition: opacity 1s ease, transform 1s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-        
-        .card.hidden {
-            opacity: 0;
-            transform: scale(0.9) translateY(20px);
-            pointer-events: none;
-        }
-        /* Иконка и заголовки */
-        
-        .icon {
-            font-size: 45px;
-            margin-bottom: 15px;
-            display: block;
-        }
-        
-        .title {
-            font-size: 24px;
-            margin-bottom: 10px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            color: #ffe0e6;
-            /* Сетло-розовый оттенок текста */
-        }
-        
-        .status {
-            font-size: 14px;
-            color: #fcaebf;
-            /* Розовый посветлее для статуса */
-            margin-bottom: 30px;
-            min-height: 1.4em;
-        }
-        /* Кнопка */
-        
-        .btn {
-            background: rgba(255, 192, 203, 0.1);
-            border: 1px solid rgba(255, 192, 203, 0.2);
-            color: #888;
-            padding: 14px 28px;
-            border-radius: 30px;
-            font-size: 13px;
-            font-weight: 600;
-            letter-spacing: 1.2px;
-            text-transform: uppercase;
-            cursor: not-allowed;
-            transition: all 0.4s ease;
-        }
-        /* Активная розовая кнопка */
-        
-        .btn.active {
-            background: #ff6b81;
-            /* Яркий розово-красный */
-            color: #fff;
-            border-color: #ff6b81;
-            cursor: pointer;
-            box-shadow: 0 5px 20px rgba(255, 107, 129, 0.5);
-        }
-        
-        .btn.active:hover {
-            background: #ff8799;
-            transform: translateY(-2px);
-        }
-        /* Canvas и финальное сообщение */
-        
-        canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-        
-        .message {
-            position: absolute;
-            bottom: 100px;
-            font-size: 22px;
-            color: #ffe0e6;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 2s ease 1s, transform 2s ease 1s;
-            z-index: 10;
-            letter-spacing: 0.5px;
-            text-align: center;
-            font-weight: 300;
-        }
-        
-        .message.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Love.css</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background-color: #050505;
+      color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      width: 280px;
+      z-index: 10;
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .card.hidden { opacity: 0; transform: scale(0.9); pointer-events: none; }
+    .icon { font-size: 40px; margin-bottom: 15px; }
+    .title { font-size: 22px; margin-bottom: 10px; font-weight: 600; }
+    .status { font-size: 13px; color: #888; margin-bottom: 25px; }
+    .btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #666;
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      cursor: not-allowed;
+      transition: all 0.3s ease;
+    }
+    .btn.active {
+      background: #e63946;
+      color: #fff;
+      border-color: #e63946;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(230, 57, 70, 0.4);
+    }
+    canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+    .message {
+      position: absolute;
+      bottom: 80px;
+      font-size: 20px;
+      color: rgba(255, 255, 255, 0.9);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1.5s ease, transform 1.5s ease;
+      z-index: 10;
+      letter-spacing: 0.5px;
+    }
+    .message.visible { opacity: 1; transform: translateY(0); }
+  </style>
 </head>
-
 <body>
+  <div class="card" id="card">
+    <div class="icon">🌹</div>
+    <h1 class="title">Love.css</h1>
+    <p class="status" id="status">Загрузка подарки для тебя...</p>
+    <button class="btn" id="btn" disabled>TAP TO BLOOM</button>
+  </div>
 
-    <!-- Карточка -->
-    <div class="card" id="card">
-        <span class="icon">🌸</span>
-        <h1 class="title">Для Тебя</h1>
-        <p class="status" id="status">Создаю кое-что особенное...</p>
-        <button class="btn" id="btn" disabled>Взглянуть</button>
-    </div>
+  <canvas id="canvas"></canvas>
+  <div class="message" id="message">i coded this for you 🌹</div>
 
-    <!-- Canvas для цветка -->
-    <canvas id="canvas"></canvas>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const card = document.getElementById('card');
+      const status = document.getElementById('status');
+      const btn = document.getElementById('btn');
+      const canvas = document.getElementById('canvas');
+      const message = document.getElementById('message');
+      const ctx = canvas.getContext('2d');
 
-    <!-- Финальная надпись -->
-    <div class="message" id="message">Пусть этот цветок украсить твой день хотя бы немного ✨</div>
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const card = document.getElementById('card');
-            const status = document.getElementById('status');
-            const btn = document.getElementById('btn');
-            const canvas = document.getElementById('canvas');
-            const message = document.getElementById('message');
-            const ctx = canvas.getContext('2d');
+      const steps = [
+        { text: "Growing digital petals...", delay: 1000 },
+        { text: "Optimizing 3D rendering...", delay: 2200 },
+        { text: "Ready to bloom!", delay: 3200 }
+      ];
 
-            function resize() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
+      steps.forEach(({ text, delay }) => {
+        setTimeout(() => {
+          status.textContent = text;
+          if (text === "Ready to bloom!") {
+            btn.classList.add('active');
+            btn.disabled = false;
+          }
+        }, delay);
+      });
+
+      btn.addEventListener('click', () => {
+        card.classList.add('hidden');
+        setTimeout(startFlowerAnimation, 500);
+      });
+
+      function startFlowerAnimation() {
+        const cx = canvas.width / 2;
+        const cy = canvas.height / 2 + 100;
+        let progress = 0;
+
+        function animate() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          progress += 0.006;
+
+          const stemProgress = Math.min(progress * 2, 1);
+          const stemHeight = 260 * stemProgress;
+          
+          ctx.beginPath();
+          ctx.moveTo(cx, cy);
+          ctx.quadraticCurveTo(cx - 10, cy - stemHeight / 2, cx, cy - stemHeight);
+          ctx.strokeStyle = '#2d5a27';
+          ctx.lineWidth = 4;
+          ctx.lineCap = 'round';
+          ctx.stroke();
+
+          const flowerY = cy - stemHeight;
+
+          if (progress > 0.3) {
+            const leafProgress = Math.min((progress - 0.3) * 2.5, 1);
+            
+            ctx.save();
+            ctx.translate(cx - 3, cy - 100);
+            ctx.scale(leafProgress, leafProgress);
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.quadraticCurveTo(-40, -10, -50, -30);
+            ctx.quadraticCurveTo(-20, 10, 0, 0);
+            ctx.fillStyle = '#3a7d34';
+            ctx.fill();
+            ctx.restore();
+
+            ctx.save();
+            ctx.translate(cx + 3, cy - 140);
+            ctx.scale(leafProgress, leafProgress);
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.quadraticCurveTo(40, -10, 50, -30);
+            ctx.quadraticCurveTo(20, 10, 0, 0);
+            ctx.fillStyle = '#3a7d34';
+            ctx.fill();
+            ctx.restore();
+          }
+
+          if (progress > 0.5) {
+            const bloomProgress = Math.min((progress - 0.5) * 2, 1);
+            const petalCount = 12;
+
+            for (let i = 0; i < petalCount; i++) {
+              const angle = (i * Math.PI * 2) / petalCount;
+              const radius = 35 * bloomProgress;
+
+              ctx.save();
+              ctx.translate(cx, flowerY);
+              ctx.rotate(angle + bloomProgress * 0.5);
+              
+              ctx.beginPath();
+              ctx.moveTo(0, 0);
+              ctx.quadraticCurveTo(radius, -radius * 1.5, 0, -radius * 2);
+              ctx.quadraticCurveTo(-radius, -radius * 1.5, 0, 0);
+              
+              ctx.fillStyle = i % 2 === 0 ? 'rgba(230, 57, 70, 0.85)' : 'rgba(180, 30, 50, 0.85)';
+              ctx.fill();
+              ctx.restore();
             }
-            resize();
-            window.addEventListener('resize', resize);
 
-            // Шаги загрузки на русском
-            const steps = [{
-                text: "Собираю солнечные лучи...",
-                delay: 1200
-            }, {
-                text: "Добавляю капельку магии...",
-                delay: 2600
-            }, {
-                text: "Готово ✨",
-                delay: 4000
-            }];
+            ctx.beginPath();
+            ctx.arc(cx, flowerY, 12 * bloomProgress, 0, Math.PI * 2);
+            ctx.fillStyle = '#900c3f';
+            ctx.fill();
+          }
 
-            steps.forEach(({
-                text,
-                delay
-            }) => {
-                setTimeout(() => {
-                    status.textContent = text;
-                    if (text === "Готово ✨") {
-                        btn.classList.add('active');
-                        btn.disabled = false;
-                    }
-                }, delay);
-            });
+          if (progress < 1) {
+            requestAnimationFrame(animate);
+          } else {
+            message.classList.add('visible');
+          }
+        }
 
-            btn.addEventListener('click', () => {
-                card.classList.add('hidden');
-                setTimeout(startFlowerAnimation, 600);
-            });
-
-            function startFlowerAnimation() {
-                const cx = canvas.width / 2;
-                const cy = canvas.height / 2 + 120; // Опустил чуть ниже
-                let progress = 0;
-
-                function animate() {
-                    ctx.clearRect(0, 0, canvas.width, canvas.height);
-                    progress += 0.005; // Чуть медленнее и плавнее
-
-                    const stemProgress = Math.min(progress * 2, 1);
-                    const stemHeight = 280 * stemProgress;
-
-                    // Стебель (сделал чуть светлее)
-                    ctx.beginPath();
-                    ctx.moveTo(cx, cy);
-                    ctx.quadraticCurveTo(cx - 15, cy - stemHeight / 2, cx, cy - stemHeight);
-                    ctx.strokeStyle = '#4a7c59';
-                    ctx.lineWidth = 4;
-                    ctx.lineCap = 'round';
-                    ctx.stroke();
-
-                    const flowerY = cy - stemHeight;
-
-                    // Листья
-                    if (progress > 0.3) {
-                        const leafProgress = Math.min((progress - 0.3) * 2.5, 1);
-
-                        ctx.save();
-                        ctx.translate(cx - 3, cy - 110);
-                        ctx.scale(leafProgress, leafProgress);
-                        ctx.beginPath();
-                        ctx.moveTo(0, 0);
-                        ctx.quadraticCurveTo(-45, -10, -55, -35);
-                        ctx.quadraticCurveTo(-25, 10, 0, 0);
-                        ctx.fillStyle = '#569368';
-                        ctx.fill();
-                        ctx.restore();
-
-                        ctx.save();
-                        ctx.translate(cx + 3, cy - 155);
-                        ctx.scale(leafProgress, leafProgress);
-                        ctx.beginPath();
-                        ctx.moveTo(0, 0);
-                        ctx.quadraticCurveTo(45, -10, 55, -35);
-                        ctx.quadraticCurveTo(25, 10, 0, 0);
-                        ctx.fillStyle = '#569368';
-                        ctx.fill();
-                        ctx.restore();
-                    }
-
-                    // Цветок (Розовые оттенки)
-                    if (progress > 0.5) {
-                        const bloomProgress = Math.min((progress - 0.5) * 2, 1);
-                        const petalCount = 12;
-
-                        for (let i = 0; i < petalCount; i++) {
-                            const angle = (i * Math.PI * 2) / petalCount;
-                            const radius = 38 * bloomProgress;
-
-                            ctx.save();
-                            ctx.translate(cx, flowerY);
-                            // Легкое вращение при раскрытии
-                            ctx.rotate(angle + (1 - bloomProgress) * 0.3);
-
-                            ctx.beginPath();
-                            ctx.moveTo(0, 0);
-                            ctx.quadraticCurveTo(radius, -radius * 1.6, 0, -radius * 2.1);
-                            ctx.quadraticCurveTo(-radius, -radius * 1.6, 0, 0);
-
-                            // Чередование нежно-розового и чуть более насыщенного
-                            ctx.fillStyle = i % 2 === 0 ? 'rgba(255, 182, 193, 0.9)' : 'rgba(255, 140, 157, 0.9)';
-                            ctx.fill();
-                            ctx.restore();
-                        }
-
-                        // Центр цветка
-                        ctx.beginPath();
-                        ctx.arc(cx, flowerY, 14 * bloomProgress, 0, Math.PI * 2);
-                        ctx.fillStyle = '#ffb6c1';
-                        ctx.fill();
-
-                        // Сердцевина потемнее
-                        ctx.beginPath();
-                        ctx.arc(cx, flowerY, 7 * bloomProgress, 0, Math.PI * 2);
-                        ctx.fillStyle = '#e68a97';
-                        ctx.fill();
-                    }
-
-                    if (progress < 1) {
-                        requestAnimationFrame(animate);
-                    } else {
-                        // Показываем финальную надпись
-                        message.classList.add('visible');
-                    }
-                }
-
-                animate();
-            }
-        });
-    </script>
+        animate();
+      }
+    });
+  </script>
 </body>
-
 </html>
